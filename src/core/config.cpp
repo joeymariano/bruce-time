@@ -407,6 +407,26 @@ void BruceConfig::fromFile(bool checkFS) {
             String content = qrEntry["content"].as<String>();
             qrCodes.push_back({menuName, content});
         }
+        // Migration: ensure Pride QR presets exist on configs saved before they were added
+        const QrCodeEntry prideQrDefaults[] = {
+            {"Trevor Project", "https://www.thetrevorproject.org"},
+            {"Trans Lifeline", "https://translifeline.org"      },
+            {"It Gets Better", "https://itgetsbetter.org"       },
+            {"GLAAD",          "https://glaad.org"              },
+        };
+        for (const auto &def : prideQrDefaults) {
+            bool found = false;
+            for (const auto &e : qrCodes) {
+                if (e.menuName == def.menuName) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                qrCodes.push_back(def);
+                count++; // triggers saveFile() below to persist the additions
+            }
+        }
     } else {
         count++;
         log_e("Fail to load qrCodes");
