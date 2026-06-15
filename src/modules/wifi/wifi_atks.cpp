@@ -380,6 +380,57 @@ const char rickrollssids[] PROGMEM = {"01 Never gonna give you up\n"
                                       "07 Never gonna tell a lie\n"
                                       "08 and hurt you\n"};
 
+const char pridessids[] PROGMEM = {"Armed gays don't get bashed\n"
+                                   "Be bold be proud be gay\n"
+                                   "Be gay do crime\n"
+                                   "Gay by birth\n"
+                                   "Gay is Good\n"
+                                   "Gays Bash Back\n"
+                                   "Hey ho homophobia's got to go\n"
+                                   "One thing straight? I'm not\n"
+                                   "Love wins\n"
+                                   "Out the closets into the streets\n"
+                                   "Protect the Dolls\n"
+                                   "Protect trans kids\n"
+                                   "rainbows reign\n"
+                                   "silence=death action=life\n"
+                                   "sounds gay - im in\n"
+                                   "Trans rights are human rights\n"
+                                   "2 4 6 8 are your kids straight?\n"
+                                   "We're here we're queer\n"
+                                   "Fight for LGBTQ+ Rights\n"
+                                   "Diversity is Our Strength\n"
+                                   "Equality for All: No Exceptions!\n"
+                                   "Inclusion Matters: Voices Count\n"
+                                   "Love Knows No Gender\n"
+                                   "Speak Up for LGBTQ+ Voices\n"
+                                   "LGBTQ+ Inclusion for All!\n"
+                                   "Shatter the Stereotypes\n"
+                                   "Justice for All, Not Just Some\n"
+                                   "Pride is Power\n"
+                                   "Justice is Our Right\n"
+                                   "Intersectionality is Strength\n"
+                                   "Queer Lives Matter\n"
+                                   "Love Knows No Bounds\n"
+                                   "Visibility is Vital\n"
+                                   "Safe Spaces for Everyone\n"
+                                   "Rights Aren't Up for Debate\n"
+                                   // additional slogans
+                                   "No Pride for Some Without All\n"
+                                   "Stonewall Was a Riot\n"
+                                   "First Pride Was a Riot\n"
+                                   "Trans Joy Is Resistance\n"
+                                   "Some People Are Gay Get Over It\n"
+                                   "Bi the Way We Exist\n"
+                                   "Nonbinary and Proud\n"
+                                   "Ace and Aro Belong\n"
+                                   "Queer and Here to Stay\n"
+                                   "Love Is Love\n"
+                                   "Acceptance Not Tolerance\n"
+                                   "Pride Started as Protest\n"
+                                   "No cops at Pride\n"
+                                   "Bricks for Transphobes\n"};
+
 const uint8_t packet[128] = {
     0x80,
     0x00,
@@ -636,6 +687,11 @@ void beaconAttack() {
              BeaconMode = 2;
              txt = "Spamming Random";
          }                        },
+        {"LGBT Rights",
+         [&]() {
+             BeaconMode = 4;
+             txt = "Spamming Pride";
+         }                        },
         {"Custom SSIDs", [&]() {
              BeaconMode = 3;
              txt = "Spamming Custom";
@@ -661,6 +717,8 @@ void beaconAttack() {
         } else if (BeaconMode == 2) {
             char *randoms = randomSSID();
             beaconSpamList(randoms);
+        } else if (BeaconMode == 4) {
+            beaconSpamList(pridessids);
         } else if (BeaconMode == 3) {
             if (!file) {
                 options = {};

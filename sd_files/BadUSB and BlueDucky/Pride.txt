@@ -1,0 +1,21 @@
+REM Bruce BadUSB - Pride / LGBTQ+ message
+REM Opens Notepad and types a pride message. Harmless, just text.
+GUI r
+DELAY 500
+STRINGLN notepad.exe
+DELAY 1000
+STRINGLN  ____      _     _      _
+STRINGLN |  _ \ _ _(_) __| | ___| |
+STRINGLN | |_) | '__| |/ _` |/ _ \ |
+STRINGLN |  __/| |  | | (_| |  __/_|
+STRINGLN |_|   |_|  |_|\__,_|\___(_)
+ENTER
+STRINGLN Love is love.
+STRINGLN Trans rights are human rights.
+STRINGLN You are valid, you are loved, you belong.
+ENTER
+STRINGLN Need someone to talk to?
+STRINGLN The Trevor Project: https://www.thetrevorproject.org
+STRINGLN Trans Lifeline: https://translifeline.org
+ENTER
+STRINGLN Happy Pride.

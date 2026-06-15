@@ -48,6 +48,12 @@
 #define UI_COLOR_SHOCKING_PINK_PRI 0xEF7C
 #define UI_COLOR_SHOCKING_PINK_SEC 0xFE39
 #define UI_COLOR_SHOCKING_PINK_BG 0xE015
+#define UI_COLOR_PRIDE_PRI 0xB13F  // vivid violet
+#define UI_COLOR_PRIDE_SEC 0xFA7B  // hot pink
+#define UI_COLOR_PRIDE_BG 0x0
+#define UI_COLOR_TRANS_PRI 0x5E7F  // trans flag light blue
+#define UI_COLOR_TRANS_SEC 0xF557  // trans flag pink
+#define UI_COLOR_TRANS_BG 0x0
 
 struct ColorEntry {
     const char *name;
@@ -72,6 +78,8 @@ static constexpr ColorEntry UI_COLORS[] = {
     {"Purple",        UI_COLOR_PURPLE_PRI,        UI_COLOR_PURPLE_SEC,        UI_COLOR_PURPLE_BG       },
     {"Magenta",       UI_COLOR_MAGENTA_PRI,       UI_COLOR_MAGENTA_SEC,       UI_COLOR_MAGENTA_BG      },
     {"Shocking Pink", UI_COLOR_SHOCKING_PINK_PRI, UI_COLOR_SHOCKING_PINK_SEC, UI_COLOR_SHOCKING_PINK_BG},
+    {"Pride",         UI_COLOR_PRIDE_PRI,         UI_COLOR_PRIDE_SEC,         UI_COLOR_PRIDE_BG        },
+    {"Trans",         UI_COLOR_TRANS_PRI,         UI_COLOR_TRANS_SEC,         UI_COLOR_TRANS_BG        },
 };
 
 static constexpr int UI_COLOR_COUNT = sizeof(UI_COLORS) / sizeof(UI_COLORS[0]);
